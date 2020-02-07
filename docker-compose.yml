@@ -1,6 +1,15 @@
 ---
 version: '2'
 services:
+  workspace:
+    container_name: workspace
+    build:
+      context: ./docker/workspace
+    volumes:
+      - .:/kafka-streams-example
+    working_dir: /kafka-streams-example
+    tty: true
+
   zookeeper:
     image: confluentinc/cp-zookeeper:5.4.x-latest
     hostname: zookeeper
