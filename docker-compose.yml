@@ -5,6 +5,19 @@ services:
     container_name: workspace
     build:
       context: ./docker/workspace
+    ports:
+      - '5005:5005'
+      - '8000:8000'
+    volumes:
+      - .:/kafka-streams-example
+    working_dir: /kafka-streams-example
+    tty: true
+
+  workspace-mvn-deps:
+    container_name: workspace-mvn-deps
+    image: marcoaasilva/kafka-streams-example-mvn-deps
+    ports:
+      - '5005:5005'
     volumes:
       - .:/kafka-streams-example
     working_dir: /kafka-streams-example
